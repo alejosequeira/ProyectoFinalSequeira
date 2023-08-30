@@ -1,2 +1,2 @@
 ﻿# JsCoderHouse
-https://alejosequeira.github.io/JsCoderHouse/
+https://alejosequeira.github.io/PreEntrega1-Sequeira/
