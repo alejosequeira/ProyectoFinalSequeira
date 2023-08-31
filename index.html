@@ -1,30 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Password Generator</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Password Generator</title>
+  <script src="validar.js"></script>
+  <script src="generator.js"></script>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  
   <h1>Password Generator</h1>
   <div class="container">
     <!-- <input type="number" id="length" placeholder="Password Length Required"> -->
+    
     <input type="number" id="length" placeholder="Password Length Required" min="8" max="16" onchange="validarLargo()">
     <p id="error-message" style="color: red;"></p>
-
-    <script>
-    function validarLargo() {
-      const input = document.getElementById("length");
-      const errorMessage = document.getElementById("error-message");
-
-      if (input.value >= 8 && input.value <= 16) {
-        errorMessage.textContent = "Correcto! Por favor configura tu contraseña de "+input.value+" caracteres...";        
-      } else {
-        errorMessage.textContent = "La contraseña debe tener entre 8 y 16 caracteres, ingresa otro valor.";
-      }
-    }
-    </script>
+    <!-- <button onclick="generate()">Generate Password</button><br /> -->
     <div class="lado">        <label for="uppercase">Uppercase</label>
         <input type="checkbox" id="uppercase" checked></div>
     <div class="lado">        <label for="lowercase">Lowercase</label>
@@ -34,13 +26,14 @@
     <div class="lado">        <label for="symbols">Symbols</label>
         <input type="checkbox" id="symbols" checked></div>
     
-    <button id="generate">Generate</button>
+    <button id="generate" onclick="randomPass(inp)">Generate Password</button>
   
   <div class="output">
-    <h2>CONTRASEÑA REQUERIDA : </h2>
+    <h2>PASSWORD REQUIRED : </h2>
     <input type="text" id="password" readonly>
   </div>
 </div>
-  <script src="script.js"></script>
+  
+  
 </body>
 </html>
