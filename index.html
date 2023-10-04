@@ -1,40 +1,70 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Seleccion Arg de Futbol</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-  
-  <h1>Seleccion Arg de Futbol</h1>
-  <!-- <div class="container"> -->
-    <!-- <input type="number" id="length" placeholder="Password Length Required"> -->
-    
-    <!-- <input type="number" id="length" placeholder="Password Length Required" min="8" max="16" onchange="validarLargo()"> -->
-    <!-- <p id="error-message" style="color: red;"></p> -->
-    <!-- <button onclick="generate()">Generate Password</button><br /> -->
-    <!-- <div class="lado">        <label for="uppercase">Uppercase</label>
-        <input type="checkbox" id="uppercase" checked></div>
-    <div class="lado">        <label for="lowercase">Lowercase</label>
-        <input type="checkbox" id="lowercase" checked></div>
-    <div class="lado">        <label for="numbers">Numbers</label>
-        <input type="checkbox" id="numbers" checked></div>
-    <div class="lado">        <label for="symbols">Symbols</label>
-        <input type="checkbox" id="symbols" checked></div> -->
-    
-    <!-- <button id="generate" onclick="randomPass(inp)">Generate Password</button> -->
-  
-  <!-- <div class="output"> -->
-    <!-- <h2>PASSWORD REQUIRED : </h2> -->
-    <!-- <input type="text" id="password" readonly> -->
-  <!-- </div> -->
-<!-- </div> -->
-  
-<!-- <script src="validar.js"></script> -->
-<script src="generator.js"></script>
+  <header>
+    <h1>Personal Notes</h1>
+  </header>
+
+  <!-- Botón para crear una cuenta -->
+  <div id="loginForm">
+    <h2>Iniciar Sesión</h2>
+    <input type="text" id="username" placeholder="Nombre de Usuario">
+    <input type="password" id="password" placeholder="Contraseña">
+    <button onclick="login()">Iniciar Sesión</button>
+    <button id="createAccountButton" class="button">Crear cuenta</button>
+  </div>
+
+
+  <!-- Formulario de registro (inicialmente oculto) -->
+  <div id="registrationForm" class="form" style="display: none;">
+    <h2>Registro</h2>
+    <label for="usernameInput">Nombre de usuario:</label>
+    <input type="text" id="usernameInput" class="input" required>
+    <br>
+    <label for="passwordInput">Contraseña:</label>
+    <input type="password" id="passwordInput" class="input" required>
+    <br>
+    <button id="registerButton" class="button">Registrarse</button>
+  </div>
+
+  <!-- Mensaje de éxito (inicialmente oculto) -->
+  <div id="successMessage" class="success" style="display: none;">
+    <p>Cuenta creada exitosamente. ¡Ahora puedes iniciar sesión!</p>
+  </div>
+
+  <div id="notesArea" style="display: none;">
+    <section>
+      <aside>
+        <h2>Tus Notas
+          <button onclick="addNote()" class="plus-btn"><i class="fa fa-plus"></i></button>
+        </h2>
+        <ul id="notesList"></ul>
+        <button onclick="logout()">Cerrar Sesión</button>
+      </aside>
+
+
+
+
+      <main>
+        <div class="title-note">
+          <p id="numNote"></p>
+        </div>
+        <form>
+          <textarea id="noteInput" type="text" placeholder="type here..."></textarea>
+        </form>
+      </main>
+    </section>
+  </div>
+  <script src="generator.js"></script>
 </body>
 
 </html>
