@@ -2,9 +2,11 @@
 <html>
 
 <head>
-  <title>Seleccion Arg de Futbol</title>
+  <title>Mis Notas</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="node_modules/sweetalert2/dist/sweetalert2.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -14,18 +16,17 @@
     <h1>Personal Notes</h1>
   </header>
 
-  <!-- Botón para crear una cuenta -->
+  <!-- Formulario de inicio de sesión y registro-->
   <div id="loginForm">
     <h2>Iniciar Sesión</h2>
     <input type="text" id="username" placeholder="Nombre de Usuario">
     <input type="password" id="password" placeholder="Contraseña">
-    <button onclick="login()">Iniciar Sesión</button>
-    <button id="createAccountButton" class="button">Crear cuenta</button>
-  </div>
+    <button class="buttonLogin" onclick="login()">Iniciar Sesión</button>
+    <!-- Botón para crear una cuenta -->
+    <button id="createAccountButton" class="buttonCreate">Crear cuenta</button>
 
-
-  <!-- Formulario de registro (inicialmente oculto) -->
-  <div id="registrationForm" class="form" style="display: none;">
+    <!-- Formulario de registro (inicialmente oculto) -->
+  <div id="registrationForm" class="form">
     <h2>Registro</h2>
     <label for="usernameInput">Nombre de usuario:</label>
     <input type="text" id="usernameInput" class="input" required>
@@ -35,20 +36,27 @@
     <br>
     <button id="registerButton" class="button">Registrarse</button>
   </div>
-
+  </div>
+  
   <!-- Mensaje de éxito (inicialmente oculto) -->
   <div id="successMessage" class="success" style="display: none;">
     <p>Cuenta creada exitosamente. ¡Ahora puedes iniciar sesión!</p>
   </div>
 
   <div id="notesArea" style="display: none;">
+
+    <div id="gridContainer" class="grid-container"></div>
+    <button id="showGridButton">Mostrar Notas en Cuadrícula</button>
+
     <section>
       <aside>
-        <h2>Tus Notas
+        <h2>Mis Notas          
+          <button onclick="addNote()" class="plus-btn"><i class="fa fa-check"></i></button>
           <button onclick="addNote()" class="plus-btn"><i class="fa fa-plus"></i></button>
         </h2>
         <ul id="notesList"></ul>
         <button onclick="logout()">Cerrar Sesión</button>
+        
       </aside>
 
 
@@ -64,6 +72,7 @@
       </main>
     </section>
   </div>
+  <script src="alertas.js"></script>
   <script src="generator.js"></script>
 </body>
 

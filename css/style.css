@@ -1,5 +1,8 @@
+@charset "UTF-8";
 body {
   font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f0f0f0;
   margin: 0;
 }
 
@@ -8,6 +11,7 @@ header {
   margin: 0;
   text-align: center;
   padding: 5px;
+  margin-bottom: 2%;
 }
 
 ul {
@@ -50,8 +54,17 @@ main textarea {
   background-color: #f4f4f4;
   border: none;
   width: 100%;
-  height: 200px;
+  height: 600px;
   box-sizing: border-box;
+  resize: none;
+  font-size: 1.2rem;
+  font-weight: 400;
+  font-family: "Times New Roman", Times, serif;
+}
+@media (max-width: 760px) {
+  main textarea {
+    height: 200px;
+  }
 }
 
 .title-note {
@@ -102,38 +115,71 @@ li {
   color: white;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background-color: #f0f0f0;
-}
-
 h1 {
   color: #333;
 }
 
-.button {
-  background-color: #007bff;
-  color: #fff;
+#loginForm {
+  border: 4px solid gray;
+  width: 380px;
+  height: auto;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+#loginForm .buttonLogin {
+  margin: 20px 0 10px 0;
+  width: 100%;
+  padding: 10px;
+  color: white;
   border: none;
-  padding: 10px 20px;
-  font-size: 16px;
   cursor: pointer;
-  margin: 10px;
+  box-sizing: border-box;
+  background-color: #4CAF50;
+}
+#loginForm .buttonLogin:hover {
+  background-color: #008a07;
+}
+#loginForm .buttonCreate {
+  background-color: rgba(0, 123, 255, 0.768627451);
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 10px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+#loginForm .buttonCreate:hover {
+  background-color: #0055af;
 }
 
 .form {
   background-color: #fff;
-  border: 1px solid #ccc;
+  border: 10px solid gray;
   padding: 20px;
   border-radius: 5px;
-  width: 300px;
-  margin: 0 auto;
+  height: 100%;
+  margin: 2% auto;
+  display: none;
+}
+.form .button {
+  background-color: rgba(0, 123, 255, 0.768627451);
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 10px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.form .button:hover {
+  background-color: #0055af;
 }
 
 .input {
   width: 100%;
   padding: 10px;
+  box-sizing: border-box;
   margin: 5px 0;
   border: 1px solid #ccc;
   border-radius: 3px;
@@ -146,6 +192,26 @@ h1 {
   margin: 10px auto;
   width: 300px;
   border-radius: 5px;
+}
+
+/* Estilos para el contenedor de la cuadrícula */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+/* Estilos para cada celda de la cuadrícula */
+.gridCell {
+  border: 3px solid gray; /* Borde para cada celda */
+  border-radius: 5px;
+  margin: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  background-color: #ffe4a7;
+  padding: 10px; /* Espacio interno en cada celda */
+  overflow: hidden; /* Ocultar el contenido que se desborde de la celda */
+  white-space: wrap; /* Evitar el retorno de línea en el contenido largo */
+  text-overflow: ellipsis; /* Mostrar puntos suspensivos (...) para el contenido que se desborde */
 }
 
 /*# sourceMappingURL=style.css.map */
