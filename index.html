@@ -5,8 +5,6 @@
   <title>Mis Notas</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- <script src="node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
-  <link rel="stylesheet" href="node_modules/sweetalert2/dist/sweetalert2.min.css"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -44,16 +42,20 @@
   </div>
 
   <div id="notesArea" style="display: none;">
-
+    
     <div id="gridContainer" class="grid-container"></div>
-    <button id="showGridButton">Mostrar Notas en Cuadrícula</button>
+    <button id="showGridButton">JUST 4 FUN !</button>
+    <button id="showGridButto">refresh</button>
 
     <section>
       <aside>
-        <h2>Mis Notas          
+        <h2>Mis Notas</h2>
+        <div class="buttones">
           <button onclick="addNote()" class="plus-btn"><i class="fa fa-check"></i></button>
           <button onclick="addNote()" class="plus-btn"><i class="fa fa-plus"></i></button>
-        </h2>
+          <button class="trash-btn" id="deleteButton"><i class="fa fa-trash"></i></button>
+
+        </div>
         <ul id="notesList"></ul>
         <button onclick="logout()">Cerrar Sesión</button>
         
@@ -72,7 +74,7 @@
       </main>
     </section>
   </div>
-  <script src="alertas.js"></script>
+  <script src="memes.js"></script>
   <script src="generator.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

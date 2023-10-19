@@ -37,7 +37,7 @@ function login() {
         })
     }
 }
-// Funcion para mostrar las notas del usuuario
+
 function showNotes() {
     const loginForm = document.getElementById("loginForm");
     const notesArea = document.getElementById("notesArea");
@@ -48,8 +48,9 @@ function showNotes() {
     notesArea.style.display = "block";
 
     const userNotesList = JSON.parse(localStorage.getItem("userNotes"))[currentUser] ?? [];
-
     notesList.innerHTML = "";
+
+
     userNotesList.forEach((note, index) => {
         const listItem = document.createElement("li");
 
@@ -57,33 +58,41 @@ function showNotes() {
 
         const truncatedNote = note.length > 18 ? note.substring(0, 18) : note;
 
-        const deleteButton = document.createElement("button");
-        deleteButton.className = "trash-btn";
-        deleteButton.innerHTML = '<i class="fa fa-trash-o"></i>';
-        deleteButton.addEventListener("click", () => deleteNote(index));
-
         listItem.addEventListener("click", () => {
             const noteIndex = listItem.getAttribute("data-note-index");
 
             let num = index + 1;
             let subTitle = note.split("\n")[0];
             subTitle = subTitle.length > 80 ? subTitle.substring(0, 80) : subTitle;
-            numNote.innerHTML = `Note ${num}- ${subTitle}`;
 
-            noteInput.value = userNotesList[noteIndex];
-
-            noteInput.setAttribute("data-editing-index", noteIndex);
+            if (userNotesList.length == index) {
+                noteInput.value = "";
+                numNote.innerHTML = "";
+            } else {
+                numNote.innerHTML = `Note ${num}- ${subTitle}`;
+                noteInput.value = userNotesList[noteIndex];
+                noteInput.setAttribute("data-editing-index", noteIndex);
+            }
         });
 
         listItem.textContent = truncatedNote;
-        listItem.appendChild(deleteButton);
         notesList.appendChild(listItem);
     });
+
+    showFirstNote();
 }
+
+function showFirstNote() {
+    const firstNoteItem = document.querySelector("#notesList li");
+    if (firstNoteItem) {
+        firstNoteItem.click();
+    }
+}
+
 // Función para agregar notas
 function addNote() {
     const newNote = document.getElementById("noteInput").value;
-    const editingIndex = noteInput.getAttribute("data-editing-index"); 
+    const editingIndex = noteInput.getAttribute("data-editing-index");
 
     if (newNote !== "") {
         const userNotes = JSON.parse(localStorage.getItem("userNotes")) || {};
@@ -92,7 +101,7 @@ function addNote() {
 
         if (editingIndex !== null) {
             userNotesList[editingIndex] = newNote;
-        } else {  
+        } else {
             userNotesList.push(newNote);
             Swal.fire({
                 position: 'top-end',
@@ -100,20 +109,28 @@ function addNote() {
                 title: 'Your work has been saved',
                 showConfirmButton: false,
                 timer: 1100
-              })
+            })
+
         }
         userNotes[currentUser] = userNotesList;
         localStorage.setItem("userNotes", JSON.stringify(userNotes));
 
         showNotes();
-        document.getElementById("noteInput").value = ""; 
-        numNote.innerHTML = ""; 
+        document.getElementById("noteInput").value = "";
+        numNote.innerHTML = "";
 
         noteInput.removeAttribute("data-editing-index");
-        
+
     }
     numNote.innerHTML = `NEW NOTE. . .`;
+
 }
+//  escucha botón de eliminación
+document.getElementById("deleteButton").addEventListener("click", function () {
+    const index = noteInput.getAttribute("data-editing-index");
+    deleteNote(index);
+});
+
 
 // Función para eliminar una nota
 function deleteNote(index) {
@@ -122,6 +139,9 @@ function deleteNote(index) {
         const userNotesList = JSON.parse(localStorage.getItem("userNotes"))[currentUser] ?? [];
 
         if (index >= 0 && index < userNotesList.length) {
+            console.log(`index= ${index}`)
+            console.log(`userList= ${userNotesList.length}`)
+
             userNotesList.splice(index, 1);
 
             const userNotes = JSON.parse(localStorage.getItem("userNotes")) ?? {};
@@ -189,21 +209,21 @@ function logout() {
         toast: true,
         position: 'top-end',
         showConfirmButton: false,
-        timer: 3000,
+        timer: 1200,
         timerProgressBar: true,
         didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
         }
-      })
-      
-      Toast.fire({
+    })
+
+    Toast.fire({
         icon: 'success',
         title: 'LogOut successfully'
-      })
+    })
     setTimeout(function () {
         window.location.reload();
-    }, 3000);
+    }, 1000);
 }
 
 // PARTE DE REGISTRO...
@@ -232,7 +252,7 @@ function registerUser() {
 
     setTimeout(function () {
         window.location.reload();
-    }, 2000);
+    }, 1000);
 }
 
 // botón "Crear cuenta"

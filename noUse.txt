@@ -497,3 +497,27 @@ function showNotesInGrid() {
 
 // Asociar la función a un botón (asegúrate de tener un botón con el id "showGridButton" en tu HTML)
 document.getElementById("showGridButton").addEventListener("click", showNotesInGrid);
+
+
+
+// // Función para mostrar las notas en la cuadrícula
+// function showNotesInGrid() {
+    
+
+//     const userNotesList = JSON.parse(localStorage.getItem("userNotes"))[currentUser] || [];
+
+//     userNotesList.forEach((note, index) => {
+//         const noteCard = document.createElement("div");
+//         noteCard.className = "gridCell";        
+        
+//         let subTitle = note.split("\n")[0];
+//         subTitle = subTitle.length > 80 ? subTitle.substring(0, 80) : subTitle;
+
+//         noteCard.innerHTML = `<h3>${subTitle}</h3><p>${note}</p>`;
+
+//         gridContainer.appendChild(noteCard);
+//     });
+// }
+
+// //  botón "Mostrar Notas en Cuadrícula"
+// document.getElementById("showGridButton").addEventListener("click", showNotesInGrid);
